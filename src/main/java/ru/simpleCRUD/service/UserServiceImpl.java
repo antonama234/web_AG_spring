@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService {
     private UserDAO dao;
 
     @Autowired
-    public void setRepository(UserDAO dao) {
+    public UserServiceImpl(UserDAO dao) {
         this.dao = dao;
     }
 

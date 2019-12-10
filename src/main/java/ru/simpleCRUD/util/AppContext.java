@@ -1,6 +1,6 @@
 package ru.simpleCRUD.util;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,7 +22,7 @@ public class AppContext {
     private PropertyResolver propertyResolver;
 
     @Autowired
-    public void setEnvironment(PropertyResolver propertyResolver) {
+    public AppContext(PropertyResolver propertyResolver) {
         this.propertyResolver = propertyResolver;
     }
 
