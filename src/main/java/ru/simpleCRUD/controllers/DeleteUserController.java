@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ru.simpleCRUD.models.User;
-import ru.simpleCRUD.service.UserService;
+import ru.simpleCRUD.service.UserServiceImpl;
 
 @Controller
 public class DeleteUserController {
-    private UserService service;
+    private UserServiceImpl service;
 
     @Autowired
-    public DeleteUserController(UserService service) {
+    public DeleteUserController(UserServiceImpl service) {
         this.service = service;
     }
 
-    @PostMapping(value = "deleteUser")
+    @PostMapping(value = "/admin/deleteUser")
     public ModelAndView deleteUserPage(@RequestParam("id") Long id) {
         User user = service.findById(id);
         service.deleteUser(user);

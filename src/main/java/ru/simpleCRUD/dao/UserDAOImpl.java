@@ -2,10 +2,10 @@ package ru.simpleCRUD.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.simpleCRUD.models.Role;
 import ru.simpleCRUD.models.User;
 
 import java.util.List;
@@ -61,6 +61,15 @@ public class UserDAOImpl implements UserDAO {
     public User findById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         return (User) session.createQuery("FROM User WHERE id=:id")
+                .setParameter("id", id)
+                .uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public Role getRole(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return (Role) session.createQuery("FROM  WHERE id=:id")
                 .setParameter("id", id)
                 .uniqueResult();
     }

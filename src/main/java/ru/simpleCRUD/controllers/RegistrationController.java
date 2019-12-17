@@ -14,30 +14,30 @@ import ru.simpleCRUD.service.UserServiceImpl;
 import java.util.Collections;
 
 @Controller
-public class AddUserController {
-    private UserServiceImpl service;
+public class RegistrationController {
+    private final UserServiceImpl service;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AddUserController(UserServiceImpl service) {
+    public RegistrationController(UserServiceImpl service) {
         this.service = service;
     }
 
-    @GetMapping(value = "/admin/addUser")
-    public ModelAndView addUserPage() {
+    @GetMapping(value = "/registration")
+    public ModelAndView registrationPage() {
         User user = new User();
-        return new ModelAndView("add","user", user);
+        return new ModelAndView("registration","user", user);
     }
 
-    @PostMapping(value = "/admin/addUser")
-    public String addUser(@ModelAttribute("user") User user) {
+    @PostMapping(value = "/registration")
+    public String regUser(@ModelAttribute ("user") User user) {
         if (!service.isExist(user.getLogin())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRoles(Collections.singleton(Role.USER));
             service.addUser(user);
         }
-        return "redirect:/admin/allUsers";
+        return "redirect:/login";
     }
 }

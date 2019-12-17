@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>All users list</title>
@@ -19,17 +20,17 @@
                     <td>${users.surname}</td>
                     <td>${users.age}</td>
                     <td>
-                        <form action="editUser" method="get">
+                        <form action="<spring:url value="/admin/editUser"/>" method="get">
                             <button name="id" value=${users.id}>Edit</button>
                         </form>
                     </td>
                     <td>
-                        <form action="deleteUser" method="post">
+                        <form action="<spring:url value="/admin/deleteUser"/>" method="post">
                             <button name="id" value=${users.id}>Delete</button>
                         </form>
                     </td>
                     <td>
-                        <form action="${pageContext.request.contextPath}/user" method="get">
+                        <form action="<spring:url value="/user"/>" method="get">
                             <button name="id" value=${users.id}>To user page</button>
                         </form>
                     </td>
@@ -37,8 +38,11 @@
             </c:forEach>
         </table>
     </div>
-    <form action="addUser" method="get">
+    <form action="<spring:url value="/admin/addUser"/>" method="get">
         <button type="submit">Add new user</button>
+    </form>
+    <form action="<spring:url value="/login"/>" method="get">
+        <button type="submit">Logout</button>
     </form>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package ru.simpleCRUD.service;
 
+import ru.simpleCRUD.models.Role;
+
 import java.util.List;
 
 public interface Service<T> {
@@ -10,4 +12,5 @@ public interface Service<T> {
     T findByLogin(String login);
     T findById(Long id);
     boolean isExist(String login);
+    Role getRole(Long id);
 }

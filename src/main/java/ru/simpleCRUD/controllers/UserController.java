@@ -7,20 +7,18 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.simpleCRUD.models.User;
 import ru.simpleCRUD.service.UserServiceImpl;
 
-import java.util.List;
+import java.security.Principal;
 
 @Controller
-public class AllUsersController {
-    private UserServiceImpl service;
+public class UserController {
 
     @Autowired
-    public AllUsersController(UserServiceImpl service) {
-        this.service = service;
+    private UserServiceImpl service;
+
+    @GetMapping(value = "/user")
+    public ModelAndView userPage(Principal principal) {
+        User user = service.findByLogin(principal.getName());
+        return new ModelAndView("user", "user", user.getName());
     }
 
-    @GetMapping(value = "/admin/allUsers")
-    public ModelAndView allUsersPage() {
-        List<User> list = service.allUsers();
-        return new ModelAndView("all", "allUsers", list);
-    }
 }

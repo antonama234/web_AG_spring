@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,7 +9,7 @@
         <h1>Please enter parameters</h1>
     </div>
     <div>
-        <form action="addUser" method="post">
+        <form action="<spring:url value="/admin/addUser"/>" method="post">
             <table>
                 <tr>
                     <td>Login:</td>
@@ -29,7 +30,7 @@
         </form>
     </div>
     <div>
-        <form action="allUser" method="get">
+        <form action="<spring:url value="/admin/allUser"/>" method="get">
             <button type="submit">Back to main menu</button>
         </form>
     </div>

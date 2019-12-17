@@ -1,5 +1,6 @@
 package ru.simpleCRUD.dao;
 
+import ru.simpleCRUD.models.Role;
 import ru.simpleCRUD.models.User;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface UserDAO extends DAO<User> {
     void editUser(User user);
     User findByLogin(String login);
     User findById(Long id);
+    Role getRole(Long id);
 }

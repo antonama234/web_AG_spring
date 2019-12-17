@@ -1,5 +1,7 @@
 package ru.simpleCRUD.dao;
 
+import ru.simpleCRUD.models.Role;
+
 import java.util.List;
 
 public interface DAO<T> {
@@ -9,4 +11,5 @@ public interface DAO<T> {
     void editUser(T object);
     T findByLogin(String login);
     T findById(Long id);
+    Role getRole(Long id);
 }
