@@ -10,8 +10,11 @@
         <%
             out.println("<p>Welcome to your page " + request.getAttribute("user") + "!</p>");
         %>
-        <form action="<spring:url value="/login"/>" method="get">
+        <form action="<spring:url value="/logout"/>" method="post">
             <button type="submit">Logout</button>
+        </form>
+        <form action="<spring:url value="/admin/allUsers"/>" method="get">
+            <button type="submit">To admin</button>
         </form>
     </div>
 </body>

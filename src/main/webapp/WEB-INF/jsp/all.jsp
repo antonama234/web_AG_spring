@@ -41,7 +41,7 @@
     <form action="<spring:url value="/admin/addUser"/>" method="get">
         <button type="submit">Add new user</button>
     </form>
-    <form action="<spring:url value="/login"/>" method="get">
+    <form action="<spring:url value="/logout"/>" method="post">
         <button type="submit">Logout</button>
     </form>
 </body>

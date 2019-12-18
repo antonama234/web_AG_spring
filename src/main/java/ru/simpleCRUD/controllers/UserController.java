@@ -20,5 +20,4 @@ public class UserController {
         User user = service.findByLogin(principal.getName());
         return new ModelAndView("user", "user", user.getName());
     }
-
 }
